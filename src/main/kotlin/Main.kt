@@ -1,337 +1,267 @@
-import javafx.beans.binding.When
-import sun.plugin2.message.Message
-import kotlin.random.Random
 fun main(args: Array<String>) {
-//    println("Hello World!")
+//     Dấu // gọi comment
+//     1: Khai báo biến
+//     mutable, immutable
 //
-//    // Try adding program arguments via Run/Debug configuration.
-//    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-//    println("Program arguments: ${args.joinToString()}")
-//    1: Khai báo biến
-//    mutable,immutable
+//     Từ khóa khai báo biến là var
+//    var name = "Phạm Tấn Phát"
+//    name = "Phạm Tấn Phát 1"
+//    print(name)
+//     Từ khóa khai báo val
+//    val pi = 3.14
+//    val address = "199 Lý thường kiệt"
+
+//     2: Kiểu dữ liệu
+//     Kiểu String: Chuỗi
+//    var text: String = "Hello"
+//     Kiểu số nguyên: Int, Long
+//    var age: Int = 29
+//     Kiểu số thực: Float, Double
+//    var weight: Float = 74.9f
+//    var query = """
+//        SELECT * FROM TableName
+//        WHERE ID = 1
+//        ORDER BY DESC
+//    """.trimIndent()
+//    print(query)
+//    Kiểu lý luận: Boolean
+//     var isMale: Boolean = true
+
+//    3: Toán tử
+    // Dấu + mà xử lý với chuỗi thì mang tính chất là phép nối chuỗi
+    // String interpolation: Dùng để truyền biến vào 1 chuỗi
+//    var number1 = 5
+//    var number2 = 7
 //
-//    var name ="Ngo Huy Cuong"
-//    name = "Ngo Huy Cuong 1"
-//    print (name)
-//      2. Kiểu dữ liệu
-//        val pi = 3.14
-//        val address = "199 Ly thuong kiet"
-//        var text: string = "Hello"
+//    var result = ++number1 - --number2 + number1++ - number2++ + number2--
+    // 6 - --number2 + number1++ - number2++ + number2--; a + 6, b = 7
+    // 6 - 6 + number1++ - number2++ + number2--; a = 6, b = 6
+    // 6 - 6 + 6 - number2++ + number2--; a = 7, b = 6
+    // 6 - 6 + 6 - 6 + number2--; a = 7, b = 7
+    // 6 - 6 + 6 - 6 + 7; a = 7, b = 6
 
-//        Kiểu lý luận: Boolean
-//        var isMale: Boolean = true
+    // number1 = 7, number2 = 6, result = 7
 
-//        var number1 = 5
-//        var number2 = 10
-//        var result = number1 + number2
+//    println("Number1: $number1")
+//    println("Number2: $number2")
+//    println("Result: $result")
 
-//        3: Toán tử
-//        var number1 = 5
-//        var number2=number1++
-//        var number3=++number1
+    // Toán tử variable++
+    // Thực hiện phép gán
+    // Thực hiện tăng giá trị variable lên thêm 1
 
-//        var numberx = 5
-//        "abc" +numberx=>abc5
+    // number1 =6, number2 = 6, result = 6
+    // number1: 7  ; number 2:6  ; number:7
+    // number1 = 5, number2 = 7, result = 7
 
-//        print("Number2 : "+ number2)
+//    4: Câu điều kiện => Đưa ra các trường hợp để có thể giải quyết
 
+    // So sanh 2 số nếu
+    // a > b => in ra la 1
+    // a < b => in ra -1
+    // a == b => in ra 0
 
-        //Nguyên nhân xảy ra
-//        //Do number1++ nó là biểu thức đặt biệt có 2 biểu thức con sẻ được xử lý
-//        println ("Number2 : ${number2}")
-//        println ("Number3 : ${number3}")
-//        println ("Number2+3 : ${number1+number2}")
+//    var a = 5
+//    var b = 5
 
-//        number1 = number1 + 1
-//        number1+=1
-//        ++number1
-//        number1++
+    // magic number
 
-//4: câu điều kiện: đưa ra các trường hợp để có thể xử lý
+//    if (a > b) {
+//        print("A lon hon b")
+//    } else if (a < b) {
+//        print("A be hon b")
+//    } else {
+//        print("A bang b")
+//    }
 
-//// so sánh 2 số nếu
-//        a>b => in ra la 1
-//        a<b=> in ra -1
-//        a==b=>in ra 0
+    // Tính bmi : cân nặng / chiều cao * chiều cao
 
-//        var a=4
-//        var b=5
-//        if(a>b){
-//        println(" a lon hon b")
-//        } else if(a<b){
-//                print("a be hon b")
-//        }else {
-//                print("a =b")
-//        }
-
-//Tinh BMI: Cân nặng (kg)/chiều cao (m)
-
+//    var weight: Float = 74.5f
+//    var height: Float = 1.75f
 //
-//        var weight: Float = 74.5f
-//        var height: Float = 1.75f
+//    var bmi = weight / (height * height)
+//    var message: String
 //
-//        var bmi = weight / (height * height)
-//        var message: String
+//    var maxValueThin = 18.5f
+//    var maxValueNormal = 24.9f
+//    var maxValueLittleOverWeight = 29.9f
+//    var maxValueFatLevel1 = 34.9f
+//    var maxValueFatLevel2 = 39.9f
 //
-//        var maxValueThin = 18.5f
-//        var maxValueNormal = 24.9f
-//        var maxValueLittleOverWeight = 29.9f
-//        var maxValueFatLevel1 = 34.9f
-//        var maxValueFatLeve2 = 39.9f
+//    if (bmi < maxValueThin){
+//        message = "Gầy"
+//    } else if (bmi < maxValueNormal){
+//        message = "Bình thường"
+//    }else if (bmi < maxValueLittleOverWeight){
+//        message = "Hơi béo"
+//    } else if (bmi < maxValueFatLevel1){
+//        message = "Béo phì cấp độ 1"
+//    } else if (bmi < maxValueFatLevel2){
+//        message = "Béo phì cấp độ 2"
+//    } else {
+//        message = "Béo phì cấp độ 3"
+//    }
 //
-//        if (bmi < maxValueThin){
-//                message = "Gầy"
-//        } else if (bmi < maxValueNormal){
-//                message = "Bình thường"
-//        }else if (bmi < maxValueLittleOverWeight){
-//                message = "Hơi béo"
-//        } else if (bmi < maxValueFatLevel1){
-//                message = "Béo phì cấp độ 1"
-//        } else if (bmi < maxValueFatLeve2){
-//                message = "Béo phì cấp độ 2"
-//        } else {
-//                message = "Béo phì cấp độ 3"
-//        }
+//    println("Chỉ số cơ thể: $bmi")
+//    println("Tình trạng sức khỏe: $message")
+
+    // In
+    // Chỉ số cơ thể: ?
+    // Tình trạng sức khỏe: ?
+
+//    var numberA = 5
+//    var numberB = 10
+//    var message: String = if (numberA > numberB) {
+//        "A lớn hơn B"
+//    } else if (numberA < numberB) {
+//        "A bé hơn B"
+//    } else {
+//        "A bằng B"
+//    }
 //
-//        println("Chỉ số cơ thể: $bmi")
-//        println("Tình trạng sức khỏe: $message")
+//    print(message)
 
+    // Toán tử && và ||
 
-//        var isMale = false
-//        var message = if (isMale) {
-//                "Đàng ông"
-//        } else if (!isMale) {
-//                "abc"
-//        } else {
-//                "đàn bà"
-//        }
-//        print (message)
-
-
-//        var numberA = 5
-//        var numberB = 10
-//        var message = if (numberA > numberB) {
-//                "A lớn hơn B"
-//        } else if (numberA > numberB) {
-//                "A bé hơn B"
-//        } else {
-//                "A bằng B"
-//        }
-//        print (message)
-
-//4. Toán tử && và //
+//    var account = ""
+//    var password = "a"
 //
-//        var account = "a"
-//        var password = " "
-
-// nếu như tài khoản và mật khẩu có giá trị thì mới cho đăng nhập
+    // Nếu như tài khoản và mật khẩu có giá trị thì mới cho đăng nhập
 //
-//        if(account.length > 0 && password.length >0) {
-//                print ("Xử lý đăng nhập")
-//        } else {
-//                print ("Chưa truyền đủ thông tin")
-//        }
+//    if (account.length == 0 || password.length == 0) {
+//        print("Chưa truyền đủ thông tin để xử lý")
+//    } else {
+//        print("Xử lý đăng nhập")
+//    }
 
-//        if (account.length == 0 || password.length == 0)
-//        {
-//                print(" chưa truyền đủ thông tin để xử lý")
-//        } else {
-//                print(" xu lý đăng nhập")
-//        }
-
-//6. Câu điều kiện when
-
-//        var month = 6
-//
-//        var message = when (month) {
-//            in 1.. 3 -> "quý 1"
-//            4,5,6 -> "Quý 2"
-//                else -> "khong co quy nao"
-//        }
-//                print (message)
-
+    // 4: Câu điều kiện when
 
 //    var month = 6
-//    var message = when (month){
-//        in 1..3 -> "Quý 1"
-//        in 4..6 -> "Quý 2"
-//        in 7..9 -> "Quý 3"
-//        in 10..12 -> "Quý 4"
-//        else -> "không thuộc quý nào"
+//
+//    var message = when (month) {
+//        in 1..3 -> "Quí 1"
+//        4, 5, 6, 8, 9 -> "Quí 2"
+//        else -> "Không thuộc quý nào"
 //    }
-//    print (message)
+//
+//    print(message)
 
-//5. Mảng
+    // 5: Mảng
 
-//        var arrNumber = mutableListOf<Int>(1,3,5,7,9)
-    //mutableListOf thay đổi duoc trong mảng
-//    var arrNumber = ListOf(int)(1,3,5,7,9)
-    // không thay đổi duoc trong mảng
-//thêm
-//    arrNumber.add (11)
+//    var arrNumbers = mutableListOf<Int>(1, 3, 5, 7, 9)
 
-// in giá trị phần tử đầu tiên
-//    println("Giá trị phần tử đầu tiên: ${arrNumber[0]}")
-// in giá trị phần tử cuoi cung
-//    println("Giá trị phần tử cuối cùng: ${arrNumber[arrNumber.size - 1]}")
+    // Thêm dữ liệu vào mảng
+//    arrNumbers.add(11)
 
-// Xoa phần tử trong mảng
-//    arrNumber.removeAt(0)
-//    print(arrNumber[0])
-    //Sua gia tri
-    
-//    arrNumber[0] = 11
-//    print(arrNumber)
+    // In giá trị phần tử đầu tiên
+//    println("Giá trị phần tử đầu tiên: ${arrNumbers[0]}")
 
-//    6. Vong lập for
+    // In giá trị phần tử cuối cùng
+//    println("Giá trị phần tử cuối cùng: ${arrNumbers[arrNumbers.size - 1]}")
 
-        // in: trong khoang
-//    for ((index,item) in (1..10 step 2).withIndex()){
-//        println ("index: $index, Item: $item")
+    // Xóa phần tử trong mảng
+//    arrNumbers.removeAt(0)
+
+    // Sửa giá trị
+//    arrNumbers[0] = 11
+//    print(arrNumbers[0])
+
+    // 6: Vòng lặp for
+
+    // in: trong khoảng
+//    for ((index, item) in (1..10 step 2).withIndex()) {
+//        println("Index: $index, Item: $item")
 //    }
 
-    // until: be hon ko bang
+    // until: Bé hơn chứ không bằng
 //    for (item in 1 until 10) {
-//        println (item)
-//    }
-
-    // down to: đếm ngược
-
-//    for (item in 10 downTo 1){
 //        print(item)
 //    }
 
-//    for (item in 1 ..100){
-//
-//        // kiểm tra giá trị chia hết cho 2 va 5 thi dừng lại
-//
-//        if ( item % 2 == 0 && item % 5 ==0) {
-//            println(item )
-//            break
-//        }
+    // down to: Đếm ngược
+//    for (item in 10 downTo 1) {
+//        println(item)
 //    }
 
-//        var count = 0
-//    for (item in (1 ..100)){
+//    var count = 0
 //
-//        // kiểm tra giá trị chia hết cho 2 va 5 thi dừng lại
-//
-//        if ( item % 2 == 0 && item % 5 ==0) {
-//            count ++
-//            if(count ==2) {
-//                println (item )
+//    for (item in 1..100){
+//        // Kiểm tra giá trị chia hết cho 2 và 5
+//        if (item % 2 == 0 && item % 5 == 0) {
+//            count++
+//            if (count == 2) {
+//                println(item)
 //                break
 //            }
 //        }
 //    }
-//
-//print ("tiep tuc")
 
-//    var arr1 = mutableListOf (5, 4, 3, 2, 1)
-//    var arr2 = mutableListOf (10, 20, 30, 40, 50)
-//    arr1.add (11)
+//    var arr1 = mutableListOf(5, 4, 3, 2, 1)
+//    var arr2 = mutableListOf(10, 20, 30, 40, 50)
 //
-//    loop1@ for (elementArr2 in arr2){
-//        println("vòng lap 1: $elementArr2")
-//        for (elementArr1 in arr1) {
-//            println("Vong lap 2: $elementArr1")
-//            break@loop1
-//        }
-//    }
-    //50
-    //40
-    //30
-    //20
-    //10
-    //20
-    //40
-    //60
-    //....
-    //50
-
-    // IQ + (AQ + EQ) = 100%
-    // IQ = 20%
-    // AQ + EQ=> thời gian + vượt qua nỗi sợ
-
-//    var arr1 = mutableListOf (5, 4, 3, 2, 1)
-//    var arr2 = mutableListOf (10, 20, 30, 40, 50)
-//
-//    for((index, item) in arr1.withIndex()){
-//        if (index == 3){
+//    for ((index, item) in arr1.withIndex()) {
+//        if (index == 0) {
 //            continue
 //        }
 //        println(item)
 //    }
-//Vòng lập while
-//                var count = Random.nextInt ( 10)
-//                while ( count % 2 == 0){
-//                        println(count)
-//                        count += Random.nextInt ( 100)
-//                }
 
-//8: Phương thức
-
-//        var a = "hello"
-//        println(a)
-
-//        showMessage("Hell00o")
-
-//        for ((index, item) in (1..10 step 2).withIndex()) {
-//                println ("Index: $index, Item: $item")
+//    loop1@ for (elementArr2 in arr2) {
+//        println("Vòng lặp 1: $elementArr2")
+//        loop2@ for (elementArr1 in arr1) {
+//            println("Vòng lặp 2: $elementArr1")
+//            break@loop2
 //        }
+//    }
+
+//    7: Vòng lặp while
+//    var count = Random.nextInt(10)
 //
-//        for ((index, item) in ("a,b,c,d").withIndex()){
-//                println("Index: $index, Item: $item")
-//        }
+//    while (count % 2 == 0) {
+//        println(count)
+//        count = Random.nextInt(100)
+//    }
 
-//        for (item in 1 until 10){
-//                println(item)
-//        }
+//    8: Phương thức
+//    showMessage("Hello")
 
-//        for(item in 10 downTo 1) {
-//                println(item)
-//        }
+//    9: Object
 
-//9. Object
-    var cat2 = Animal02 ()
-    cat2.name = "Kity"
-    cat2.weight = "1.2 Kg"
-    print("name: ${cat2.name}, weight: ${cat2.weight}")
-
-    var cat3 = Animal()
-    cat3.name = "Doremon"
-    cat3
-
-
-    var cat = Animal()
-    cat.name = "a"
-    cat.weight = "5.0 kg"
-    println(cat.name)
-
-//        var teo = Person ()
-//        cat.name = "Kitty"
-//        cat.weight = "1.2 Kg"
+    // Phuong thuc khoi tao
+//    var cat = Animal()
+//    cat.name = "a"
+//    cat.weight = "5.0 kg"
 //
-//        var cat2 = Animal("Doremon", "5.0 Kg")
-//        cat2.name = "Doremon"
-//        cat2.weight = "5.0 kg"
+//    print(cat.name)
+//    cat.printInfo()
+//    var cat2 = Animal("Doremon", "5.0 Kg")
 //
-//        println ("Name: ${cat.name}, weight: ${cat.weight}")
-//        println ("Name: ${cat2.name}, weight: ${cat2.weight}")
+//    cat.printInfo()
+//    cat2.printInfo()
 
-// cách 2 để print thông tin ra thay vi phải đánh 2 dòng lệnh như trên
-//        cat.printInfo()
-//        cat2.printInfo()
+    // Tinh dong goi: The hien viec cac thong tin cua doi tuong nen su dung qua cac
+    // phuong thuc getter va setter de truy cap
 
+    // Tinh ke thua: Nâng cấp các chức năng mới
+//
+//    var cat1 = Cat (name = "Kity", weight = "3kg", color = "white")
+//    cat1.printInfo()
+//    var cat1 = Cat("Kity", "3 Kg", "White")
+//    cat1.printInfo()
+//    cat1.run ()
+//
+//        var cat1 = Cat("Kity", "3 Kg", "White")
+//        cat1.printInfo()
 
-//        tính đóng gói: quản lý thông tin khi sử dụng, không quản lý được dữ liệu đầu vào, thể hiện việc các thông tin của đối tượng nên sử dụng hoặc các phương thức getter và setter để truy cập
-
-
-
+//    Tính trượu tượng
+//    var pizzaStore = PizzaStore()
+//    pizzaStore.orderPizza(PizzaStore())
+//Tính đa hình: cùng tên nhưng tùy thuộc vào đối tượng
+    var cat1 = Cat ("Kity", weight = "3 Kg", color = "White")
+    cat1.printInfo()
 }
 
-// () chứa tham số (biến)
-//fun showMessage (message: String): Unit {
-//println(message)
-//}
 
+//fun showMessage(message: String) {
+//    println(message)
+//}
